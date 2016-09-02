@@ -71,7 +71,7 @@ public class Helper {
 		
 		
 		pw.println("<Env:RequestPayload xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"urn:euroclearfi:iso20022:xsd:businessenvelope ISO20022BusinessEnvelope.xsd\" xmlns:Env=\"urn:euroclearfi:iso20022:xsd:businessenvelope\">"); 
-		String s = "<AppHdr xmlns=\"urn:iso:std:iso:20022:tech:xsd:head.001.001.01\" xsi:schemaLocation=\"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 head.001.001.01.xsd\"><Fr><FIId><FinInstnId><BICFI>APKEFIH0TST</BICFI></FinInstnId></FIId></Fr><To><FIId><FinInstnId><BICFI>DABAFIH0</BICFI></FinInstnId></FIId></To><BizMsgIdr>150408164199472</BizMsgIdr><MsgDefIdr>seev.041.001.04</MsgDefIdr><CreDt>2015-04-06T16:41:08Z</CreDt></AppHdr>";
+		String s = "<AppHdr xmlns=\"urn:iso:std:iso:20022:tech:xsd:head.001.001.01\" xsi:schemaLocation=\"urn:iso:std:iso:20022:tech:xsd:head.001.001.01 head.001.001.01.xsd\"><Fr><FIId><FinInstnId><BICFI>APKEFIH0XXX</BICFI></FinInstnId></FIId></Fr><To><FIId><FinInstnId><BICFI>DABAFIH0</BICFI></FinInstnId></FIId></To><BizMsgIdr>150408164199472</BizMsgIdr><MsgDefIdr>seev.041.001.04</MsgDefIdr><CreDt>2015-04-06T16:41:08Z</CreDt></AppHdr>";
         s=s.replaceAll("seev\\.041\\.001\\.04",message);
 		pw.println(s);
 		s = "<Document xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"urn:iso:std:iso:20022:tech:xsd:seev.041.001.04 seev.041.001.04.xsd\" xmlns=\"urn:iso:std:iso:20022:tech:xsd:seev.041.001.04\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">";
@@ -242,7 +242,7 @@ public class Helper {
 					String groupName = "";
 					if (XMLDOMMapper.messageName.equals("seev.031.001.05"))
 						groupName = "_CorpActnNtfctn_Grp";
-					if (XMLDOMMapper.messageName.equals("seev.035.001.05"))
+					if (XMLDOMMapper.messageName.equals("seev.035.001.05")||XMLDOMMapper.messageName.equals("seev.035.001.06"))
 						groupName = "_CorpActnMvmntPrlimryAdvc";
 			    	Files.copy(in,out.resolve(XMLDOMMapper.messageName+groupName+XMLDOMMapper.messageVersion.substring(0,2)+".xsd"),StandardCopyOption.REPLACE_EXISTING); 							
 			} catch (IOException e) {

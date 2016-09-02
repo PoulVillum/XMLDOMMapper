@@ -169,8 +169,8 @@ public class XMLDOMMapper {
 
 		
 		// sese.030 - 1
-		XMLDOMMapper.incoming = false;
-		File fXml = new File("c:\\app\\efixsd\\EFI-_SR-_Securities_Settlement-_V2_6-_FINAL__SecuritiesSettlementConditionsModificationRequestV03_sese_030_001_03_20160613_1758.xsd");
+//		XMLDOMMapper.incoming = false;
+//		File fXml = new File("c:\\app\\efixsd\\EFI-_SR-_Securities_Settlement-_V2_6-_FINAL__SecuritiesSettlementConditionsModificationRequestV03_sese_030_001_03_20160613_1758.xsd");
 
 		
 //		// sese.031 - 1
@@ -210,9 +210,15 @@ public class XMLDOMMapper {
 //		xmlDoc = builder.parse("c:\\app\\EFI_-_CA_-_Securities_Events_(Option_Instruction)_...-CorporateActionInstructionCancellationRequestStatusAdviceV04_seev.041.001.04-20151117.xsd");
 //		File fXml = new File("c:\\app\\efixsd\\EFI-_CA-_Securities_Events_%28Option_Instruction%29__CorporateActionInstructionCancellationRequestStatusAdviceV04_seev_041_001_04_20160703_1836.xsd");
 		
-		//seev.041.001.05
-//		XMLDOMMapper.incoming = true;
-//		File fXml = new File("c:\\app\\efixsd\\EFI-_CA-_Securities_Events_%28Option_Instruction%29__CorporateActionInstructionCancellationRequestStatusAdviceV05_seev_041_001_05_20160703_1835.xsd");
+
+		
+		//seev.035.001.06
+		XMLDOMMapper.incoming = true;
+//		File fXml = new File("c:\\app\\efixsd\\EFI-_CA-_Securities_Events_%28Movement_Advice___Co_CorporateActionMovementPreliminaryAdviceV06_seev_035_001_06_SecurityDistribution_20160828_2015.xsd");
+//		File fXml = new File("c:\\app\\efixsd\\EFI-_CA-_Securities_Events_%28Movement_Advice___Co_CorporateActionMovementPreliminaryAdviceV06_seev_035_001_06_CashDistribution_MAN_20160828_2015-rettet.xsd");
+//		File fXml = new File("c:\\app\\efixsd\\EFI-_CA-_Securities_Events_%28Movement_Advice___Co_CorporateActionMovementPreliminaryAdviceV06_seev_035_001_06_ReorgwithSecurityDis_20160828_2015.xsd");
+//		File fXml = new File("c:\\app\\efixsd\\EFI-_CA-_Securities_Events_%28Movement_Advice___Co_CorporateActionMovementPreliminaryAdviceV06_seev_035_001_06_CashDistribution_CHO_20160828_2016.xsd");
+		File fXml = new File("c:\\app\\efixsd\\EFI-_CA-_Securities_Events_%28Movement_Advice___Co_CorporateActionMovementPreliminaryAdviceV06_seev_035_001_06_SecurityReorg_MAND_20160828_2016.xsd");
 		
 		
 		
@@ -338,7 +344,7 @@ public class XMLDOMMapper {
 											}
 				fileNames = fileNames +"_CorpActnNtfctn_Grp" + XMLDOMMapper.messageVersion.substring(0,2) ;
 		}
-		if (fileNames.equals("seev.035.001.05")){
+		if (fileNames.equals("seev.035.001.05")||fileNames.equals("seev.035.001.06")){
 			if (XMLDOMMapper.EvtTp.equals("EXRI")&&XMLDOMMapper.MndtryVlntryEvtTp.equals("CHOS") && XMLDOMMapper.EvtPrcgTp.equals("REOR"))
 				XMLDOMMapper.messageVersion = "05.00";
 			else

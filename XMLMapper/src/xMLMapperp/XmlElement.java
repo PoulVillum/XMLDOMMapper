@@ -236,7 +236,7 @@ public class XmlElement {
 			if(XMLDOMMapper.messageName.equals("seev.031.001.05") && el.getName().equals("Document")) 
 				Helper.keysForPLI(pwPLI);
 			else
-	    	if(XMLDOMMapper.messageName.equals("seev.035.001.05") && el.getName().equals("Document"))
+	    	if((XMLDOMMapper.messageName.equals("seev.035.001.05")||XMLDOMMapper.messageName.equals("seev.035.001.06")) && el.getName().equals("Document"))
 	    		Helper.keysForPLI(pwPLI);
 
 			else
@@ -372,7 +372,7 @@ public class XmlElement {
         
         if(XMLDOMMapper.messageName.equals("seev.031.001.05") && el.getName().equals("Document"))
         	Helper.keysForXslt(pwXslt);
-    	if(XMLDOMMapper.messageName.equals("seev.035.001.05") && el.getName().equals("Document"))
+    	if((XMLDOMMapper.messageName.equals("seev.035.001.05")||XMLDOMMapper.messageName.equals("seev.035.001.06")) && el.getName().equals("Document"))
     		Helper.keysForXslt35(pwXslt);
     	if(XMLDOMMapper.messageName.equals("seev.036.001.05") && el.getName().equals("Document"))
     		Helper.keysForXslt36(pwXslt);
@@ -529,6 +529,7 @@ public class XmlElement {
 			else{
 			    pwFfd.println(XmlElement.indent(XmlElement.getIndent())+"<Group name=\""+el.getName()+"\">");
 			    if(XMLDOMMapper.messageName.substring(0,15).equals("seev.035.001.05") && el.getName().equals("Document") ||
+			       XMLDOMMapper.messageName.substring(0,15).equals("seev.035.001.06") && el.getName().equals("Document") ||
 	        	   XMLDOMMapper.messageName.substring(0,15).equals("seev.031.001.05") && el.getName().equals("Document")){
 	        		Helper.keysForFfd(pwFfd);
 	        		System.out.println("------------------------55"	);
