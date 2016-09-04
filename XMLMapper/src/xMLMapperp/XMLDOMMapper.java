@@ -145,8 +145,10 @@ public class XMLDOMMapper {
 	
 //      seev.034
 //		File fXml = new File("c:\\app\\EFI-_CA-_Securities_Events_(Option_Instruction)__CorporateActionInstructionStatusAdviceV05_seev_034_001_05_20160302_2118.xsd");
+//		seev.034.001.06	
+		XMLDOMMapper.incoming = true;
+		File fXml = new File("d:\\ab\\EFI-_CA-_Securities_Events_%28Option_Instruction%29__CorporateActionInstructionStatusAdviceV06_seev_034_001_06_20160902_1800.xsd");
 		
-		// her er en change
 		
 		// seev.036 - 08
 //		File fXml = new File("c:\\app\\EFI-_CA-_Securities_Events_(Movement_Advice___Co_CorporateActionMovementConfirmationV05_seev_036_001_05_VoluntaryEvents_20160217_2012.xsd");
@@ -213,12 +215,12 @@ public class XMLDOMMapper {
 
 		
 		//seev.035.001.06
-		XMLDOMMapper.incoming = true;
+//		XMLDOMMapper.incoming = true;
 //		File fXml = new File("c:\\app\\efixsd\\EFI-_CA-_Securities_Events_%28Movement_Advice___Co_CorporateActionMovementPreliminaryAdviceV06_seev_035_001_06_SecurityDistribution_20160828_2015.xsd");
 //		File fXml = new File("c:\\app\\efixsd\\EFI-_CA-_Securities_Events_%28Movement_Advice___Co_CorporateActionMovementPreliminaryAdviceV06_seev_035_001_06_CashDistribution_MAN_20160828_2015-rettet.xsd");
 //		File fXml = new File("c:\\app\\efixsd\\EFI-_CA-_Securities_Events_%28Movement_Advice___Co_CorporateActionMovementPreliminaryAdviceV06_seev_035_001_06_ReorgwithSecurityDis_20160828_2015.xsd");
 //		File fXml = new File("c:\\app\\efixsd\\EFI-_CA-_Securities_Events_%28Movement_Advice___Co_CorporateActionMovementPreliminaryAdviceV06_seev_035_001_06_CashDistribution_CHO_20160828_2016.xsd");
-		File fXml = new File("c:\\app\\efixsd\\EFI-_CA-_Securities_Events_%28Movement_Advice___Co_CorporateActionMovementPreliminaryAdviceV06_seev_035_001_06_SecurityReorg_MAND_20160828_2016.xsd");
+//		File fXml = new File("c:\\app\\efixsd\\EFI-_CA-_Securities_Events_%28Movement_Advice___Co_CorporateActionMovementPreliminaryAdviceV06_seev_035_001_06_SecurityReorg_MAND_20160828_2016.xsd");
 		
 		
 		
