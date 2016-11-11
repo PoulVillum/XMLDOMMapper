@@ -1,6 +1,6 @@
 package Test4p;
 
 public class Test4 {
-	int count = 11;
+	int count = 10;
 
 }
