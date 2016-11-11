@@ -146,8 +146,8 @@ public class XMLDOMMapper {
 //      seev.034
 //		File fXml = new File("c:\\app\\EFI-_CA-_Securities_Events_(Option_Instruction)__CorporateActionInstructionStatusAdviceV05_seev_034_001_05_20160302_2118.xsd");
 //		seev.034.001.06	
-		XMLDOMMapper.incoming = true;
-		File fXml = new File("d:\\ab\\EFI-_CA-_Securities_Events_%28Option_Instruction%29__CorporateActionInstructionStatusAdviceV06_seev_034_001_06_20160902_1800.xsd");
+//		XMLDOMMapper.incoming = true;
+//		File fXml = new File("d:\\ab\\EFI-_CA-_Securities_Events_%28Option_Instruction%29__CorporateActionInstructionStatusAdviceV06_seev_034_001_06_20160902_1800.xsd");
 		
 		
 		// seev.036 - 08
@@ -192,6 +192,12 @@ public class XMLDOMMapper {
 //		File fXml = new File("c:\\app\\efixsd\\EFI-_SR-_Securities_Settlement-_V2_6-_FINAL__SecuritiesSettlementTransactionGenerationNotificationV03_sese_032_001_03_CORP_20160516_2059.xsd");
 //		File fXml = new File("c:\\app\\efixsd\\sese.032.001.03A.xsd");
 //		XMLDOMMapper.incoming = true;
+		XMLDOMMapper.incoming = true;
+//		File fXml = new File("c:\\app\\efixsd\\EFI-_SR-_Securities_Settlement-_V2_7-_FINAL__SecuritiesSettlementTransactionGenerationNotificationV03_sese_032_001_03_PORT_20160914_2053.xsd");
+//		File fXml = new File("c:\\app\\efixsd\\EFI-_SR-_Securities_Settlement-_V2_7-_FINAL__SecuritiesSettlementTransactionGenerationNotificationV03_sese_032_001_03_MKUP_MK_20160914_2053.xsd");
+//		File fXml = new File("c:\\app\\efixsd\\EFI-_SR-_Securities_Settlement-_V2_7-_FINAL__SecuritiesSettlementTransactionGenerationNotificationV03_sese_032_001_03_CORP_20160914_2053.xsd");
+//		File fXml = new File("c:\\app\\efixsd\\EFI-_SR-_Securities_Settlement-_V2_7-_FINAL__SecuritiesSettlementTransactionGenerationNotificationV03_sese_032_001_03_Claims__20160914_2053.xsd");
+		File fXml = new File("c:\\app\\efixsd\\sese.032.001.03A.xsd");
 		
 		// sese.036 new method
 //		File fXml = new File("c:\\app\\efixsd\\EFI-_CA-_Securities_Events_(Movement_Advice___Co_CorporateActionMovementConfirmationV05_seev_036_001_05_CashDistribution_CHOS_20160511_2149.xsd");
@@ -226,8 +232,8 @@ public class XMLDOMMapper {
 		
 		XmlPathSet.readXmlPathSet();
 		
-		XmlPathSet.getXps().clear();
-		XMLDOMMapper.normalMode = true;
+//		XmlPathSet.getXps().clear();
+		XMLDOMMapper.normalMode = false;
         XmlElement.setSourceFile(fXml);
         
         
@@ -597,8 +603,14 @@ public class XMLDOMMapper {
 			if (node.getNodeName().equals("xs:simpleType"))
 				handleSimpleType(node);
 			else
-				if (node.getNodeName().equals("xs:complexType"))
-					handleComplexType(node);
+				if (node.getNodeName().equals("xs:complexType")){
+					if (node.getChildNodes().getLength()==0){
+						handleSimpleType(node);
+						XmlElement.current.setEmpty(true);
+					}
+					else
+						handleComplexType(node);
+				}
 				else
 					if (node.getNodeName().equals("xs:choice")) {
 						ChoiceData chDat = new ChoiceData();
@@ -964,8 +976,12 @@ public class XMLDOMMapper {
 	private void handleElement(Node node) {
 		
 		NamedNodeMap atrList = node.getAttributes();
-		String type = atrList.getNamedItem("type").getTextContent();
 		String name = atrList.getNamedItem("name").getTextContent();
+		String type;
+		if (atrList.getNamedItem("type")==null)
+			type = "";
+		else
+		    type = atrList.getNamedItem("type").getTextContent();
 
 		Node omit = atrList.getNamedItem("omit");
 		if (omit!=null){
@@ -1107,6 +1123,8 @@ public class XMLDOMMapper {
 
        	
         }
+//        if (node.getChildNodes().getLength()==0)
+//        	newXmlElement.setEmpty(true);
         newXmlElement.setName(name);
         newXmlElement.setOccurs(occNum);
         if (XMLDOMMapper.choiceDec.peekLast()==null)

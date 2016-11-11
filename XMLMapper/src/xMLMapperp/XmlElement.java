@@ -24,6 +24,7 @@ public class XmlElement {
 	private int choiceNo = 0;
 	private String attrName = null;
 	private boolean choiceElement = false;
+	private boolean empty = false;
 	public String getAttrName() {
 		return attrName;
 	}
@@ -140,10 +141,14 @@ public class XmlElement {
 				
 			} 
 
+			if (el.empty){
+				pwXml.print("</" + el.getName()+">");
+			}
+			else
 			if (el.getChildren().size()==0){
 				String ex = el.getExample();
 				if (ex==null)
-					System.out.println("no data");
+					System.out.println("no data "+el.getName());
 				if(ex.indexOf("%%")>0){
 
 					iNo = iNo%30 +1;
@@ -188,7 +193,9 @@ public class XmlElement {
 		if (XMLDOMMapper.messageName.equals("seev.031.001.05") && el.getName().equals("AddtlInf"))
 			maxRead = 1;
 
-		
+		if (el.isEmpty() && el.getChildren().size()==0){
+			pwPLI.println("          /* Here comes no.of occurences for "+el.getName()+"   */");
+		}
 		
 		StringBuffer sb = new StringBuffer();
 		for (int i = 0; i < XmlElement.getIndent(); i++) {
@@ -219,7 +226,18 @@ public class XmlElement {
 		else{
 			if (maxRead > 1)
 				sb.append("("+el.getOccurs()+")");
+			
+			if (el.empty)
+			{
+				for (int i = 0; i < 55-getIndent() - 3; i++) {
+					sb.append(" ");
 
+				}
+				sb.append("char(3)");
+
+			
+			}
+			else
 			if (el.getChildren().size()==0){
 				for (int i = 0; i < 55-getIndent() - el.getName().length(); i++) {
 					sb.append(" ");
@@ -512,7 +530,11 @@ public class XmlElement {
 
 			if (el.getChildren().size()==0){
 				
-				
+				if (el.empty){
+					pwFfd.println(XmlElement.indent(XmlElement.getIndent())+"<Field name=\""+el.getName()+"\" length=\"3\""+" syntax=\"host\" type=\"String\" />");
+					
+				}
+				else
 				if (el.getAttrName()==null)
 					pwFfd.println(XmlElement.indent(XmlElement.getIndent())+"<Field name=\""+el.getName()+"\" length=\""+el.getLength()+"\""+" syntax=\"host\" type=\"String\" />");
 				else{
@@ -782,5 +804,11 @@ public class XmlElement {
 	}
 	public void setChoiceElement(boolean choiceElement) {
 		this.choiceElement = choiceElement;
+	}
+	public boolean isEmpty() {
+		return empty;
+	}
+	public void setEmpty(boolean empty) {
+		this.empty = empty;
 	}
 }
